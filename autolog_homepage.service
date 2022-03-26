@@ -1,0 +1,19 @@
+Unit]
+Description=Log in to Homepage
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStartPre=/bin/sleep 10
+Environment=DISPLAY=:0
+Environment="XAUTHORITY=/home/pi/.Xauthority"
+User=pi
+ExecStart=/usr/bin/python3 /home/pi/Documents/homepage_login/run-chrom.py
+RestartSec=10s
+KillMode=process
+TimeoutSec=infinity
+
+[Install]
+WantedBy=graphical.target
+
+
